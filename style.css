@@ -1,0 +1,262 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  background-color: #f1f0f6;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.logo {
+  height: 60px;
+  width: auto;
+  border-radius: 10px;
+}
+
+.logo:hover {
+  cursor: pointer;
+  box-shadow: 3px 4px 10px black;
+  transition: ease-in 0.3s;
+}
+
+.nav-list {
+  border-radius: 30px;
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  padding: 20px;
+  background-color: white;
+  color: black;
+  box-shadow: 1px 1px 10px black;
+}
+
+.nav-list li:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.hamburger {
+  height: 60px;
+  width: auto;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.hamburger:hover {
+  box-shadow: 3px 4px 10px black;
+  transition: ease-in 0.3s;
+  cursor: pointer;
+}
+
+.hamburger:not(:hover) {
+  transition: ease-out 0.3s;
+}
+
+.background-section {
+  height: 900px;
+  display: flex;
+  justify-content: space-around;
+  background-image: url(./assets/daniel-mccullough--FPFq_trr2Y-unsplash.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.first-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px;
+  font-size: 30px;
+}
+
+.second-box {
+  display: flex;
+  align-items: center;
+  margin: 50px;
+}
+
+.second-box img {
+  height: 280px;
+  width: 280px;
+  box-shadow: 5px 10px 15px black;
+  border-radius: 50%;
+}
+
+.background-section:hover img {
+  transform: scale(1.1);
+  transition: ease-in 0.3s;
+}
+
+.background-section:not(:hover) img {
+  transform: scale(1);
+  transition: ease-out 0.3s;
+}
+
+.summary-section {
+  height: 900px;
+  padding: 10%;
+}
+
+.quote {
+  margin: 100px 0 30px 30px;
+  text-align: left;
+  font-size: 60px;
+}
+
+.summary-section p {
+  margin: 30px;
+  text-align: justify;
+}
+
+.project-section > div {
+  height: 520px;
+  margin: 0;
+}
+
+.project-section h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  margin-bottom: 100px;
+}
+
+.first-box1,
+.second-box2,
+.third-box1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.first-box1 img,
+.second-box2 img,
+.third-box1 img {
+  height: 350px;
+  width: 350px;
+  border-radius: 50%;
+  box-shadow: 5px 10px 15px black;
+}
+
+.first-box2,
+.second-box1,
+.third-box2 {
+  padding: 8%;
+}
+
+.first-box2 h2,
+.second-box1 h2,
+.third-box2 h2 {
+  margin-bottom: 20px;
+}
+
+.first-box2 > p,
+.second-box1 > p,
+.third-box2 > p {
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+.first-project,
+.second-project,
+.third-project {
+  display: flex;
+  justify-content: center;
+}
+
+.first-project > *,
+.second-project > *,
+.third-project > * {
+  width: 100%;
+  height: 100%;
+  /* border: 1px solid orange; */
+}
+
+.title h1 {
+  font-size: 60px;
+}
+
+.title {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-main-box {
+  display: flex;
+  height: max-content;
+}
+
+.company {
+  background-color: rgba(0, 0, 0, 0.863);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.company h1 {
+  margin-bottom: 20px;
+  color: orange;
+  text-shadow: 3px 3px 5px black;
+}
+
+.company > p {
+  margin-bottom: 10px;
+}
+
+.form {
+  background-color: #f8f6f7;
+  width: 100%;
+  padding: 3%;
+}
+
+.form form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-weight: bold;
+}
+
+.form form input {
+  padding: 8px;
+  border-radius: 10px;
+  border-style: none;
+  box-shadow: 1px 1px 3px black;
+}
+
+.form form textarea {
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px black;
+  border-style: none;
+  resize: vertical;
+  padding: 8px;
+}
+
+input[type="submit"]:hover {
+  background-color: orange;
+  font-weight: bold;
+  transition: ease-in 0.2s;
+}
+
+.footer {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  background-color: #fff9eb;
+  height: max-content;
+}
