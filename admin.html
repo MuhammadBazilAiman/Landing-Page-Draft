@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Hello admin</h1>
+    <label for="name">username</label>
+    <input
+      name="username"
+      id="username"
+      type="text"
+      placeholder="Insert your name here"
+    />
+    <br />
+    <label for="phone">password</label>
+    <input type="password" name="password" id="password" />
+    <br />
+    <button type="submit" onclick="adminLogin()">LOGIN :)</button>
+  </body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script>
+  const { createClient } = supabase;
+  const _supabase = createClient(
+    "https://wixfwihccukzcyquuexo.supabase.co",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndpeGZ3aWhjY3VremN5cXV1ZXhvIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjYwOTk5NTIsImV4cCI6MTk4MTY3NTk1Mn0.hGDhj0N1Z12lYc5pgt3nkriS_6dW820rarPWZSSDNLQ"
+  );
+
+  console.log("Supabase Instance: ", _supabase);
+
+  const signUpUser = async () => {
+    try {
+      var input_email = document.getElementById("username").value;
+      console.log("input_email", input_email);
+
+      var input_password = document.getElementById("password").value;
+      console.log("input_password", input_password);
+
+      let { user, error } = await _supabase.auth.signUp({
+        email: input_email,
+        password: input_password,
+      });
+
+      console.log({ user }, { error });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const adminLogin = async () => {
+    try {
+      console.log("adminLogin");
+
+      var input_email = document.getElementById("username").value;
+      console.log("input_email", input_email);
+
+      var input_password = document.getElementById("password").value;
+      console.log("input_password", input_password);
+
+      let apiCall = await _supabase.auth.signInWithPassword({
+        email: input_email,
+        password: input_password,
+      });
+
+      let user_status = "unauthenticated";
+
+      //   console.log(apiCall.data, apiCall.error);
+      if (apiCall) {
+        console.log(apiCall.data.user.role);
+        user_status = apiCall.data.user.role;
+        window.location.href = "adminDashboard.html";
+      } else {
+        console.log("error", apiCall.error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+</script>

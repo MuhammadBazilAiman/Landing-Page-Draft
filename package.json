@@ -1,0 +1,23 @@
+{
+  "name": "landing-page-draft",
+  "version": "1.0.0",
+  "description": "This is a draft for a Landing Page",
+  "main": "DBConnection.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MuhammadBazilAiman/Landing-Page-Draft.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MuhammadBazilAiman/Landing-Page-Draft/issues"
+  },
+  "homepage": "https://github.com/MuhammadBazilAiman/Landing-Page-Draft#readme",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.0.0"
+  }
+}
