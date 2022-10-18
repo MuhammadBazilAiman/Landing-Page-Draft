@@ -4,10 +4,18 @@
   box-sizing: border-box;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  scroll-behavior: smooth;
 }
 
 body {
   background-color: #f1f0f6;
+}
+
+.parent {
+  position: fixed;
+  width: 100%;
+  margin: auto;
+  top: 0;
 }
 
 .navbar {
@@ -24,24 +32,84 @@ body {
 
 .logo:hover {
   cursor: pointer;
-  box-shadow: 3px 4px 10px black;
+  box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.815);
   transition: ease-in 0.3s;
+}
+
+.logo:not(:hover) {
+  transition: ease-out 0.3s;
 }
 
 .nav-list {
   border-radius: 30px;
-  display: flex;
+  display: none;
   gap: 30px;
   list-style: none;
-  padding: 20px;
+  padding: 0 20px;
   background-color: white;
   color: black;
   box-shadow: 1px 1px 10px black;
 }
 
+.display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+.fade-in {
+  animation-duration: 0.1s;
+  animation-name: fadeIn;
+  animation-fill-mode: backwards;
+  animation-timing-function: ease-out;
+}
+
+.fade-out {
+  animation-duration: 1s;
+  animation-name: fadeOut;
+  animation-fill-mode: backwards;
+  animation-timing-function: ease-in;
+}
+
 .nav-list li:hover {
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .hamburger {
@@ -52,7 +120,7 @@ body {
 }
 
 .hamburger:hover {
-  box-shadow: 3px 4px 10px black;
+  box-shadow: 1px 1px 5px black;
   transition: ease-in 0.3s;
   cursor: pointer;
 }
@@ -68,6 +136,7 @@ body {
   background-image: url(./assets/daniel-mccullough--FPFq_trr2Y-unsplash.jpg);
   background-position: center;
   background-size: cover;
+  margin-top: 90px;
 }
 
 .first-box {
@@ -82,6 +151,8 @@ body {
   display: flex;
   align-items: center;
   margin: 50px;
+  max-width: 1000px;
+  position: relative;
 }
 
 .second-box img {
@@ -138,6 +209,28 @@ body {
   align-items: center;
 }
 
+.first-box1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px;
+  font-size: 30px;
+}
+
+.first-box1:hover img,
+.second-box2:hover img,
+.third-box1:hover img {
+  transform: scale(1.1);
+  transition: ease-in 0.3s;
+}
+
+.first-box1:not(:hover) img,
+.second-box2:not(:hover) img,
+.third-box1:not(:hover) img {
+  transform: scale(1);
+  transition: ease-out 0.3s;
+}
+
 .first-box1 img,
 .second-box2 img,
 .third-box1 img {
@@ -178,7 +271,6 @@ body {
 .third-project > * {
   width: 100%;
   height: 100%;
-  /* border: 1px solid orange; */
 }
 
 .title h1 {
@@ -246,17 +338,27 @@ body {
 }
 
 input[type="submit"]:hover {
-  background-color: orange;
+  background-color: #ffa500;
   font-weight: bold;
   transition: ease-in 0.2s;
 }
 
+input[type="submit"]:not(:hover) {
+  transition: ease-out 0.3s;
+}
+
 .footer {
-  padding: 20px;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 50px;
-  background-color: #fff9eb;
+  background-color: orange;
   height: max-content;
+}
+
+.footer > *:hover {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(228deg)
+    brightness(106%) contrast(101%);
+  transition: ease-in 0.2s;
 }
