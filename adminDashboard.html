@@ -6,7 +6,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body>
+  <body onload="fetchDataAdmin()">
     <h1>admin dashboard</h1>
+    <table class="table">
+      <tr class="table-heading">
+        <th>phone</th>
+        <th>name</th>
+        <th>email</th>
+        <th>message</th>
+      </tr>
+      <tbody class="dynamicData"></tbody>
+    </table>
   </body>
 </html>
+
+<style>
+  h1 {
+    margin: 20px;
+    text-shadow: 1px 1px 3px orange;
+  }
+  .phone,
+  .name,
+  .email,
+  .message {
+    width: 160px;
+    border: 1px solid black;
+    text-align: center;
+  }
+
+  .table {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .table-heading > * {
+    width: 160px;
+    border: 1px solid black;
+    font-size: 20px;
+  }
+
+  .dynamicData {
+    display: flex;
+    flex-direction: column;
+  }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script>
+  const { createClient } = supabase;
+  const _supabase = createClient(
+    "https://wixfwihccukzcyquuexo.supabase.co",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndpeGZ3aWhjY3VremN5cXV1ZXhvIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjYwOTk5NTIsImV4cCI6MTk4MTY3NTk1Mn0.hGDhj0N1Z12lYc5pgt3nkriS_6dW820rarPWZSSDNLQ"
+  );
+
+  console.log("Supabase Instance: ", _supabase);
+
+  const fetchDataAdmin = async () => {
+    try {
+      const output = document.querySelector(".dynamicData");
+      // const table_row = document.createElement("tr");
+      // const email_column = document.createElement("td");
+      // const phone_column = document.createElement("td");
+      // const message_column = document.createElement("td");
+
+      let apiCall = await _supabase.from("customer_info").select("*");
+
+      console.log(apiCall);
+      apiCall.data.map((data, index) => {
+        console.log(data);
+        const table_row = document.createElement("tr");
+        table_row.classList.add("data-row");
+
+        const email_column = document.createElement("td");
+        email_column.classList.add("email");
+
+        const name_column = document.createElement("td");
+        name_column.classList.add("name");
+
+        const phone_column = document.createElement("td");
+        phone_column.classList.add("phone");
+        const message_column = document.createElement("td");
+        message_column.classList.add("message");
+
+        email_column.innerText = data.email;
+        name_column.innerText = data.name;
+        phone_column.innerText = data.phone;
+        message_column.innerText = data.message;
+        table_row.append(
+          email_column,
+          name_column,
+          phone_column,
+          message_column
+        );
+        output.append(table_row);
+        //     return `<td>"${data.email}"</td>
+        // <td>${data.phone}</td>
+        // <td>${data.message}</td>`;
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+</script>
